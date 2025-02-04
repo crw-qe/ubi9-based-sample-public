@@ -1,0 +1,18 @@
+schemaVersion: 2.2.2
+metadata:
+  name: ubi9-minimal-demo
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/base-developer-image:ubi9-latest
+      args: ['tail', '-f', '/dev/null']
+      endpoints:
+        - exposure: public
+          name: nodejs
+          protocol: http
+          targetPort: 3000
+      memoryLimit: 2Gi
+      memoryRequest: 256Mi
+      mountSources: true
+    attributes:
+      controller.devfile.io/merge-contribution: true
